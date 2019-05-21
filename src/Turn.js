@@ -22,11 +22,13 @@ class Turn {
       ? this.switchPlayer()
       : this.increaseScore(player, this.answers[guessed], guessed);
     round.changeRound()
+    domUpdates.checkGuess(player)
   }
   
   increaseScore (player, answer, index) {
     player.score += answer.respondents
     this.answers.splice(index, 1)
+    domUpdates.updateScore(player, answer)
   }
 
   switchPlayer() {

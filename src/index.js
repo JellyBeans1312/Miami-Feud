@@ -14,5 +14,11 @@ import Round from './Round';
 import Turn from './Turn';
 import Player from './Player';
 import Survey from './Survey';
+import domUpdates from './domUpdates';
 
+
+//new instantiation of player to pass into the parameter
+// of update score and check guess
+domUpdates.updateScore()
+domUpdates.checkGuess()
 
