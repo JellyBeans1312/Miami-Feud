@@ -1,12 +1,14 @@
 import data from "../data";
 import Round from "../src/Round";
-import Player from '../src/Player'
+import Player from '../src/Player';
+import Game from '../src/Game';
 import domUpdates from './domUpdates';
 
 class Turn {
   constructor(round) {
     this.answers = (this.findAnswers(round));
-    this.currentPlayer = 1
+    this.currentPlayer = 1;
+    this.guessed = []
   }
 
   findAnswers (round) {
@@ -18,27 +20,30 @@ class Turn {
 
   checkGuess(player) {  
     let guessed = this.answers.map(steve => steve.answer).indexOf(player.guess)
-    guessed === -1 
-      ? this.switchPlayer()
-      : this.increaseScore(player, this.answers[guessed], guessed);
-    round.changeRound()
-    domUpdates.checkGuess(player)
+
+    if (this.guessed.includes(player.guess)) {
+      domUpdates.checkGuess()
+    } else if (guessed === -1) {
+      this.switchPlayer()
+    } else {
+      this.increaseScore(player, this.answers[guessed], guessed)
+    }
   }
   
   increaseScore (player, answer, index) {
-    player.score += answer.respondents
-    this.answers.splice(index, 1)
-    domUpdates.updateScore(player, answer)
+    player.score += answer.respondents;
+    this.guessed.push(`${this.answers[index].answer}`)
+    domUpdates.correctAnswer(player.id, player.score, answer, index)
   }
 
   switchPlayer() {
-    this.currentPlayer === 1 
-      ? this.currentPlayer = 2 
-      : this.currentPlayer = 1
+    if (this.currentPlayer === 1) {
+      this.currentPlayer = 2
+    } else {
+      this.currentPlayer = 1
+    }
+    domUpdates.switchPlayer()
   }
-
-
-
 
 }
 

@@ -1,6 +1,6 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
 $primary-background: teal;
-
+/*-------Body----------*/
 body {
   background-color: $primary-background;
   box-sizing: border-box;
@@ -8,12 +8,14 @@ body {
   padding: 0;
 }
 
+/*-------Header----------*/
 header {
   text-align: center;
   border: 1px solid black;
 }
 
-main {
+/*-------Main----------*/
+#game_board{
   display: flex;
   flex-direction: row;
 }
@@ -22,6 +24,7 @@ main {
   display: flex;
   flex: 1;
   justify-content: center;
+  flex-direction: column;
 }
 
 .container {
@@ -44,6 +47,16 @@ button {
 
 .survey-box-container {
   border: 1px solid black;
+}
+
+#steve1,
+#steve2{
+  background: url('../images/steve-1.png');
+  background-size: 200px;
+  background-repeat: no-repeat;
+  background-position: center;
+  height:200px;
+  width:200px;
 }
 
 .survey-box-container p {
