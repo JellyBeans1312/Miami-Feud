@@ -20,7 +20,6 @@ class Turn {
 
   checkGuess(player) {  
     let guessed = this.answers.map(steve => steve.answer).indexOf(player.guess)
-
     if (this.guessed.includes(player.guess)) {
       domUpdates.checkGuess()
     } else if (guessed === -1) {

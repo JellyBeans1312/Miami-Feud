@@ -3,7 +3,10 @@ import $ from 'jquery'
 
 const domUpdates = {
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> ba3693b76ef32f99f9058bb0576f87379d127fb1
   showBoard: function (roundObj, index) {
     $('#form_game-start').hide()
     $('#game_board').show()
@@ -35,8 +38,12 @@ const domUpdates = {
     $('.survey-0').text('Hidden answer 1')
     $('.survey-1').text('Hidden answer 2')
     $('.survey-2').text('Hidden answer 3')
+<<<<<<< HEAD
 
+=======
+>>>>>>> ba3693b76ef32f99f9058bb0576f87379d127fb1
   }
+
 }
 
 export default domUpdates
