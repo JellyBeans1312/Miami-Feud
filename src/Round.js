@@ -22,7 +22,10 @@ class Round {
     if (this.turn.guessed.length === 3) {
       this.currentRound++
       this.turn = new Turn(this.surveys[this.currentRound - 1])
-      domUpdates.showBoard(this, (this.currentRound - 1))
+      let that = this
+      setTimeout(function() {
+        domUpdates.showBoard(that, (that.currentRound - 1));
+      }, 2000)
     }
   }
 }
