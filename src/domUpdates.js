@@ -3,15 +3,14 @@ import $ from 'jquery'
 
 const domUpdates = {
 
-<<<<<<< HEAD
-
-=======
->>>>>>> ba3693b76ef32f99f9058bb0576f87379d127fb1
   showBoard: function (roundObj, index) {
+    $('header').show()
     $('#form_game-start').hide()
     $('#game_board').show()
     $('#survey_output').text(roundObj.surveys[index].question)
     this.hideAnswers()
+    $('#round_current-round').text(`Round ${roundObj.currentRound}`)
+    $('input').val('')
   },
 
   assignNames: function (name1, name2) {
@@ -26,22 +25,26 @@ const domUpdates = {
 
   correctAnswer: function (player, score, answerObj, num) {
     $(`#score_player-${player}`).text(score)
-    $(`.survey-${num}`).html(`${answerObj.answer} ---- ${answerObj.respondents}`)
+    $(`.survey-${num}`).html(`<div class="turn_answer-container"><p class="turn_answer">${answerObj.answer}</p> <p class="turn_answer-respondents">${answerObj.respondents}<p></div>`)
+    $('input').val('')
   },
 
   switchPlayer: function () {
     $('#steve1').toggle()
     $('#steve2').toggle()
+    $('input').val('')
   },
 
   hideAnswers: function () {
-    $('.survey-0').text('Hidden answer 1')
-    $('.survey-1').text('Hidden answer 2')
-    $('.survey-2').text('Hidden answer 3')
-<<<<<<< HEAD
+    $('.survey-0').text('')
+    $('.survey-1').text('')
+    $('.survey-2').text('')
+  },
 
-=======
->>>>>>> ba3693b76ef32f99f9058bb0576f87379d127fb1
+  quitGame: function () {
+    $('#form_game-start').show()
+    $('#game_board').hide()
+    $('header').hide()
   }
 
 }
