@@ -2,59 +2,66 @@
 <html lang="en-US">
   <head>
     <title>Gametime</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
     <header>
       <h1>Family Feud</h1>
     </header>
     <main>
-      <section class="column player-1-column">
-        <article class="container player-1-container">
-          <div class="name-and-score">
-            <h3 class="player-1-name"></h3>
-            <p class="score">Score: 0</p>
-          </div>
-          <form class="player-1-guess-and-input">
-            <p class="player-1-guess">Player 1 Guess</p>
-            <input class="player-1-guess-input" type="text" name="" value="">
-          </form>
-        </article>
-      </section>
-      <section class="column game-column">
-        <article class="container game-container">
-          <div class="round">
-            <h3>Round 1</h3>
-          </div>
-          <section class="survey-box-container">
-          <div class="survey-box survey-box-1">
-            <p class="survey-1">Hidden answer 1</p>
-          </div>
-          <div class="survey-box survey-box-2">
-            <p class="survey-2">Hidden answer 2</p>
-          </div>
-          <div class="survey-box survey-box-3">
-            <p class="survey-3">Hidden answer 3</p>
-          </div>
-          </section>
-          <form class="submit-form" action="index.html" method="post">
-            <p class="timer">30.00</p>
-            <button class="submit-button" type="button" name="button">Submit!</button>
-          </form>
-        </article>
-      </section>
-      <section class="column player-2-column">
-        <article class="container player-2-container">
-          <div class="name-and-score">
-            <h3 class="player-2-name"></h3>
-            <p class="score">Score: 0</p>
-          </div>
-          <form class="player-2-guess-and-input">
-            <p class="player-2-guess">Player 2 Guess</p>
-            <input class="player-2-guess-input" type="text" name="" value="">
-          </form>
-      </section>
+      <form id="form_game-start"> 
+        <div>
+          <input id="input_name-player1" placeholder="Player 1">
+          <input id="input_name-player2" placeholder="Player 2">
+        </div>
+        <button id="btn_game-start">Start Game</button>
+      </form>
+      <div id="game-board">
+        <section class="column player-column p1">
+          <article class="container player-container">
+            <div class="name-and-score">
+              <p id="steve1"></p>
+              <h3 id="name_player-1"></h3>
+              <p>Score: <span id="score_player-1">0</span></p>
+            </div>
+          </article>
+        </section>
+        <section class="game-column column">
+          <article class="container game-container">
+            <div class="round">
+              <h3 id="round_current-round">Round 1</h3>
+              <h4 id="survey_output"></h4>
+            </div>
+            <section class="survey-box-container">
+              <div class="survey-box survey-box-0">
+                <p class="survey-0"></p>
+              </div>
+              <div class="survey-box survey-box-1">
+                <p class="survey-1"></p>
+              </div>
+              <div class="survey-box survey-box-2">
+                <p class="survey-2"></p>
+              </div>
+            </section>
+            <form class="submit-form" onSubmit="return false">
+              <p class="timer">30.00</p>
+              <label for="input_player-guess">Input Guess Here!!!</label>
+              <input id="input_player-guess" type="text">
+              <button id="btn_submit" name="button">Submit!</button>
+            </form>
+          </article>
+        </section>
+        <section class="column player-column">
+          <article class="container player-container">
+            <div class="name-and-score">
+              <p id="steve2"></p>
+              <h3 id="name_player-2"></h3>
+              <p>Score:<span id="score_player-2">0</span></p>
+            </div>
+          </article>
+        </section>
+        <button id="btn_game-quit">X</button>
+      </div>
     </main>
-    <footer>
-    </footer>
   </body>
 </html>
