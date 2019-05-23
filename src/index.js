@@ -58,10 +58,10 @@ $('#btn_submit').on('click', function (e) {
   console.log('button')
   if (round.turn.currentPlayer === 1) {
     game.players[0].guess = $('#input_player-guess').val()
-    round.turn.checkGuess(game.players[0])
+    turn.checkGuess(game.players[0])
   } else {
     game.players[1].guess = $('#input_player-guess').val()
-    round.turn.checkGuess(game.players[1])
+    turn.checkGuess(game.players[1])
   }
   round.changeRound()
   console.log(turn.answers)
