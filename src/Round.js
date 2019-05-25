@@ -23,6 +23,7 @@ class Round {
     return survey;
   }
 
+
   // changeRound() {
   //   if (this.turn.guessed.length === 3) {
   //     // this.currentRound++
