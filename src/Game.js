@@ -17,12 +17,19 @@ class Game {
   }
 
   newRound(round, currentPlayer) {
-    console.log(round)
     let that = this;
-    setTimeout(() => {
-      domUpdates.showBoard(that.round, currentPlayer)
-    }, 2000);
-    return this.round = new Round(round, currentPlayer)
+    if (this.currentRound <= 3) {
+      setTimeout(() => {
+        domUpdates.showBoard(that.round, currentPlayer)
+      }, 2000);
+      return this.round = new Round(round, currentPlayer)
+    } else {
+      return this.gameOver()
+    }
+  }
+
+  gameOver() {
+      domUpdates.endGame()
   }
 }
 

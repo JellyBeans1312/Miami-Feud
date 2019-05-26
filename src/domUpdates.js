@@ -16,6 +16,13 @@ const domUpdates = {
     $(`score_player-2`)
   },
 
+  endGame() {
+    $('#game-board').hide()
+    $('#form_game-start').hide()
+    $('header').hide()
+    $('.game-over').text('Game Over')
+  },
+
   assignNames: function (name1, name2) {
     $("#name_player-1, label[for='input_player-1']").text(name1)
     $("#name_player-1").text(name1)

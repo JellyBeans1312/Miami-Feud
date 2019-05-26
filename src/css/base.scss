@@ -299,6 +299,13 @@ form {
 
 }
 
+.game-over {
+  font-size: 90px;
+  justify-content: center;
+  color: $miami-hot-pink;
+  font-weight: 800;
+}
+
 #steve1,
 #steve2{
   background: url('../images/steve-1.png');
