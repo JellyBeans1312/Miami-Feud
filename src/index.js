@@ -58,12 +58,12 @@ $('#btn_game-start').on('click', function (e) {
 $('#btn_submit').on('click', function (e) {
   e.preventDefault()
   console.log('button')
-  if (round.turn.currentPlayer === 1) {
+  if (game.round.turn.currentPlayer === 1) {
     game.players[0].guess = $('#input_player-guess').val()
-    turn.checkGuess(game.players[0])
+    game.round.turn.checkGuess(game.players[0])
   } else {
     game.players[1].guess = $('#input_player-guess').val()
-    turn.checkGuess(game.players[1])
+    game.round.turn.checkGuess(game.players[1])
   }
 
   if (game.round.turn.guessed.length === 3) {
