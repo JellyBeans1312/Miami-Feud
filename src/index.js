@@ -54,9 +54,8 @@ $('#btn_submit').on('click', function (e) {
   if (game.round.turn.guessed.length === 3) {
     let player = game.round.turn.currentPlayer;
     let nextRound = game.currentRound++;
-    console.log(player)
-    console.log()
     game.newRound(nextRound, player);
+    domUpdates.showBoard(game.round, player)
   }
 })
 
