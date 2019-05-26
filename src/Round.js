@@ -3,7 +3,7 @@ import Turn from "./Turn";
 // import domUpdates from './domUpdates';
 class Round {
   constructor (currentRound, currentPlayer, num) {
-    this.randomNum = num || (Math.floor(Math.random() * (14 - 2 + 1)) + 2);
+    this.randomNum = num || (Math.floor(Math.random() * (15 - 1 + 1)) + 1);
     this.survey = (this.pullSurveys(this.randomNum));
     this.currentRound = currentRound;
     this.currentPlayer = currentPlayer;
