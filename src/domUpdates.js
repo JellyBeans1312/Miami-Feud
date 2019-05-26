@@ -1,5 +1,6 @@
 /* eslint-disable object-shorthand */
 import $ from 'jquery'
+
 const domUpdates = {
 
   showBoard: function (roundObj, userID) {

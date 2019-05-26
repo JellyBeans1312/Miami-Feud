@@ -23,15 +23,29 @@ $(document).ready(function () {
   $('header').hide()
 })
 
+let data;
+fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/family-feud/data')
+  .then(response => response.json())
+  .then(feudData => feudData.data = data)
+console.log(data);
+
+
+$(document).ready(function () {
+  $('#game_board').hide()
+  $('#steve2').hide()
+})
+
 let game;
 // let round;
 // let turn;
 $('#btn_game-start').on('click', function (e) {
   e.preventDefault()
+  console.log('prevent')
   let player1 = $('#input_name-player1').val()
   let player2 = $('#input_name-player2').val()
   if (player1 && player2) {
     game = new Game(player1, player2)
+
     // round = game.round
     // turn = game.round.turn
     domUpdates.showBoard(game.round, 0)
@@ -44,13 +58,14 @@ $('#btn_game-start').on('click', function (e) {
 $('#btn_submit').on('click', function (e) {
   e.preventDefault()
   console.log('button')
-  if (game.round.turn.currentPlayer === 1) {
+  if (round.turn.currentPlayer === 1) {
     game.players[0].guess = $('#input_player-guess').val()
-    game.round.turn.checkGuess(game.players[0])
+    turn.checkGuess(game.players[0])
   } else {
     game.players[1].guess = $('#input_player-guess').val()
-    game.round.turn.checkGuess(game.players[1])
+    turn.checkGuess(game.players[1])
   }
+
   if (game.round.turn.guessed.length === 3) {
     let player = game.round.turn.currentPlayer;
     let nextRound = game.currentRound++;
