@@ -5,6 +5,7 @@
 import $ from 'jquery';
 
 // An example of how you tell webpack to use a CSS (SCSS) file
+
 import './css/base.scss';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
@@ -35,8 +36,8 @@ $(document).ready(function () {
 })
 
 let game;
-let round;
-let turn;
+// let round;
+// let turn;
 $('#btn_game-start').on('click', function (e) {
   e.preventDefault()
   console.log('prevent')
@@ -44,9 +45,10 @@ $('#btn_game-start').on('click', function (e) {
   let player2 = $('#input_name-player2').val()
   if (player1 && player2) {
     game = new Game(player1, player2)
-    round = game.round
-    turn = round.turn
-    domUpdates.showBoard(round, 0)
+
+    // round = game.round
+    // turn = game.round.turn
+    domUpdates.showBoard(game.round, 0)
     domUpdates.assignNames(player1, player2)
   } else {
     alert('please enter a name')
@@ -63,8 +65,14 @@ $('#btn_submit').on('click', function (e) {
     game.players[1].guess = $('#input_player-guess').val()
     turn.checkGuess(game.players[1])
   }
-  round.changeRound()
-  console.log(turn.answers)
+
+  if (game.round.turn.guessed.length === 3) {
+    let player = game.round.turn.currentPlayer;
+    let nextRound = game.currentRound++;
+    console.log(player)
+    console.log()
+    game.newRound(nextRound, player);
+  }
 })
 
 
