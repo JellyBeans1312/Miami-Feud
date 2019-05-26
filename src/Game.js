@@ -28,6 +28,12 @@ class Game {
     }
   }
 
+  calculateWinner(players) {
+    console.log(players)
+    let playerScore = this.players.map(player => player.score)
+    domUpdates.calculateWinner(players, playerScore)
+  }
+
   gameOver() {
       domUpdates.endGame()
   }

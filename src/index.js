@@ -65,14 +65,15 @@ $('#btn_submit').on('click', function (e) {
     game.newRound(nextRound, player);
     domUpdates.showBoard(game.round, player)
   } 
-
+  
   if (game.currentRound > 3) {
+    game.calculateWinner(game.players)
+    domUpdates.calculateWinner()
     domUpdates.endGame()
   }
 })
 
-
-$('#btn_game-quit').on('click', function () {
+$('#btn_game-quit, #btn_restart-game').on('click', function () {
   domUpdates.quitGame()
 })
 

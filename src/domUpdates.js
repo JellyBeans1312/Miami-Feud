@@ -16,11 +16,23 @@ const domUpdates = {
     $(`score_player-2`)
   },
 
-  endGame() {
+  calculateWinner: function(players, scores) {
+    let playerScores = scores.sort((a, b) => b - a)
+    let winner;
+    let person = players.map(player => {
+      if (player.score === playerScores[0]) {
+        winner = player.name
+      }
+    })
+    this.endGame(winner)
+  },
+
+  endGame(winner) {
     $('#game-board').hide()
     $('#form_game-start').hide()
     $('header').hide()
-    $('.game-over').text('Game Over')
+    $('.game-over').text(`Game Over, ${winner} won!!!`)
+    $('#btn_restart-game').show()
   },
 
   assignNames: function (name1, name2) {
@@ -40,14 +52,11 @@ const domUpdates = {
   },
 
   switchPlayer: function (userID) {
-    // let next = userID === 1 ? userID++ : userID--;
-    // $(`#steve${next}`).toggle()
     $(`#steve${userID}`).toggle()
     $('input').val('')
   },
 
   hideAnswers: function () {
-    console.log('whatup')
     $('.turn_answer-0').text('Answer 1')
     $('.turn_answer-1').text('Answer 2')
     $('.turn_answer-2').text('Answer 3')
