@@ -5,22 +5,25 @@ import Game from '../src/Game';
 import domUpdates from './domUpdates';
 
 class Turn {
-  constructor(survey) {
+  constructor(survey, currentPlayer) {
     this.answers = (this.findAnswers(survey));
-    this.currentPlayer = 1;
+    this.currentPlayer = currentPlayer;
     this.guessed = []
   }
 
   findAnswers (survey) {
     let answers = [... data.answers]
-    let filteredAnswers = answers.filter(steve => steve.surveyId === survey.id)
-    // console.log(filteredAnswers)
-    let sortedAnswers = filteredAnswers.sort((a, b)=> b.respondents - a.respondents)
+    let filteredAnswers = answers
+      .filter(steve => steve.surveyId === survey.id)
+    let sortedAnswers = filteredAnswers
+      .sort((a, b)=> b.respondents - a.respondents)
     return sortedAnswers
   }
 
   checkGuess(player) {  
-    let guessed = this.answers.map(steve => steve.answer).indexOf(player.guess)
+    let guessed = this.answers
+      .map(steve => steve.answer)
+      .indexOf(player.guess)
     if (this.guessed.includes(player.guess)) {
       domUpdates.checkGuess()
     } else if (guessed === -1) {
