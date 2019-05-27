@@ -18,11 +18,24 @@ class Game {
 
   newRound(round, currentPlayer) {
     let that = this;
-    setTimeout(() => {
-      domUpdates.showBoard(that.round, currentPlayer)
-      domUpdates.switchRound()
-    }, 2000);
-    return this.round = new Round(round, currentPlayer)
+    if (this.currentRound <= 3) {
+      setTimeout(() => {
+        domUpdates.showBoard(that.round, currentPlayer)
+      }, 2000);
+      return this.round = new Round(round, currentPlayer)
+    } else {
+      return this.gameOver()
+    }
+  }
+
+  calculateWinner(players) {
+    console.log(players)
+    let playerScore = this.players.map(player => player.score)
+    domUpdates.calculateWinner(players, playerScore)
+  }
+
+  gameOver() {
+    domUpdates.endGame()
   }
 }
 

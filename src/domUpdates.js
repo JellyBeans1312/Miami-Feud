@@ -1,12 +1,14 @@
 /* eslint-disable object-shorthand */
 import $ from 'jquery'
+
 const domUpdates = {
 
   showBoard: function (roundObj, userID) {
     $('header').show()
     $('#form_game-start').hide()
     $('#game-board').show()
-    console.log(roundObj)
+
+    $('#round_current-round').text(`Round ${roundObj.currentRound++}`)
     $('#survey_output').text(roundObj.survey.question)
     this.hideAnswers()
     $('input').val('')
@@ -20,6 +22,25 @@ const domUpdates = {
     let parsed = parseInt(round);
     let increm = parsed++;
     return $('#round_current-round span').text(increm)
+  },
+
+  calculateWinner: function(players, scores) {
+    let playerScores = scores.sort((a, b) => b - a)
+    let winner;
+    let person = players.map(player => {
+      if (player.score === playerScores[0]) {
+        winner = player.name
+      }
+    })
+    this.endGame(winner)
+  },
+
+  endGame(winner) {
+    $('#game-board').hide()
+    $('#form_game-start').hide()
+    $('header').hide()
+    $('.game-over').text(`Game Over, ${winner} won!!!`)
+    $('#btn_restart-game').show()
   },
 
   assignNames: function (name1, name2) {
