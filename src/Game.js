@@ -13,29 +13,32 @@ class Game {
     let player1 = new Player(1, name1)
     let player2 = new Player(2, name2)
     bothPlayers.push(player1, player2)
+    domUpdates.assignNames(player1.name, player2.name)
     return bothPlayers
   }
 
-  newRound(round, currentPlayer) {
+  newRound(currentPlayer) {
+    this.currentRound++
     let that = this;
     if (this.currentRound <= 3) {
       setTimeout(() => {
-        domUpdates.showBoard(that.round, currentPlayer)
+        domUpdates.showBoard(that.round)
       }, 2000);
-      return this.round = new Round(round, currentPlayer)
+      return this.round = new Round(that.currentRound, currentPlayer)
     } else {
-      return this.gameOver()
+      return this.calculateWinner()
     }
   }
 
-  calculateWinner(players) {
-    console.log(players)
-    let playerScore = this.players.map(player => player.score)
-    domUpdates.calculateWinner(players, playerScore)
-  }
-
-  gameOver() {
-    domUpdates.endGame()
+  calculateWinner() {
+    let playerScore = this.players
+      .map(player => {
+        return {name: player.name, score: player.score}
+      })
+      .sort((a, b) => b.score - a.score)
+      .shift()
+    domUpdates.endGame(playerScore)
+    return playerScore
   }
 }
 
