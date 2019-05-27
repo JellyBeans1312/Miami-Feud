@@ -55,7 +55,6 @@ $('#btn_submit').on('click', function (e) {
     let player = game.round.turn.currentPlayer;
     let nextRound = game.currentRound++;
     console.log(player)
-    console.log()
     game.newRound(nextRound, player);
   }
 })

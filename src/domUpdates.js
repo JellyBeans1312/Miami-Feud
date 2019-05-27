@@ -6,17 +6,24 @@ const domUpdates = {
     $('header').show()
     $('#form_game-start').hide()
     $('#game-board').show()
+    console.log(roundObj)
     $('#survey_output').text(roundObj.survey.question)
     this.hideAnswers()
-    $('#round_current-round').text(`Round ${roundObj.currentRound}`)
     $('input').val('')
     this.switchPlayer(userID)
-    $(`score_player-1`).text()
-    $(`score_player-2`)
+    $(`score_player-1`).text('0')
+    $(`score_player-2`).text('0')
+  },
+
+  switchRound() {
+    let round = $('#round_current-round span').text();
+    let parsed = parseInt(round);
+    let increm = parsed++;
+    return $('#round_current-round span').text(increm)
   },
 
   assignNames: function (name1, name2) {
-    $("#name_player-1, label[for='input_player-1']").text(name1)
+    // $("#name_player-1, label[for='input_player-1']").text(name1)
     $("#name_player-1").text(name1)
     $("#name_player-2").text(name2)
   },
@@ -32,25 +39,25 @@ const domUpdates = {
   },
 
   switchPlayer: function (userID) {
-    // let next = userID === 1 ? userID++ : userID--;
-    // $(`#steve${next}`).toggle()
-    $(`#steve${userID}`).toggle()
+    let next = userID === 1 ? userID++ : userID--;
+    $(`.p${next}`).toggleClass('neon-player-box')
+    $(`.p${userID}`).toggleClass('neon-player-box')
     $('input').val('')
   },
 
   hideAnswers: function () {
     console.log('whatup')
-    $('.turn_answer-0').text('Answer 1')
-    $('.turn_answer-1').text('Answer 2')
-    $('.turn_answer-2').text('Answer 3')
-    $('.turn_answer-respondents-0').text('1')
-    $('.turn_answer-respondents-1').text('2')
-    $('.turn_answer-respondents-2').text('3')
+    $('.turn_answer-0').text('Answer')
+    $('.turn_answer-1').text('Answer')
+    $('.turn_answer-2').text('Answer')
+    $('.turn_answer-respondents-0').text('')
+    $('.turn_answer-respondents-1').text('')
+    $('.turn_answer-respondents-2').text('')
   },
 
   quitGame: function () {
     $('#form_game-start').show()
-    $('#game_board').hide()
+    $('#game-board').hide()
     $('header').hide()
   }
 
