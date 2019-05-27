@@ -1,14 +1,5 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-// An example of how you import jQuery into a JS file if you use jQuery in that file
 import $ from 'jquery';
-
-// An example of how you tell webpack to use a CSS (SCSS) file
-
 import './css/base.scss';
-
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
 import Game from './Game';
 import Round from './Round';
@@ -19,7 +10,6 @@ import domUpdates from './domUpdates';
 
 $(document).ready(function () {
   $('#game-board').hide()
-  $('#steve2').hide()
   $('header').hide()
 })
 
@@ -28,22 +18,14 @@ fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/family-feud/data')
   .then(response => response.json())
   .then(feudData => feudData.data = data)
 
-
-$(document).ready(function () {
-  $('#game_board').hide()
-  $('#steve2').hide()
-})
-
 let game;
 $('#btn_game-start').on('click', function (e) {
   e.preventDefault()
-  console.log('prevent')
   let player1 = $('#input_name-player1').val()
   let player2 = $('#input_name-player2').val()
   if (player1 && player2) {
     game = new Game(player1, player2)
     domUpdates.showBoard(game.round, 0)
-    domUpdates.assignNames(player1, player2)
   } else {
     alert('please enter a name')
   }
@@ -61,19 +43,14 @@ $('#btn_submit').on('click', function (e) {
 
   if (game.round.turn.guessed.length === 3) {
     let player = game.round.turn.currentPlayer;
-    let nextRound = game.currentRound++;
-    game.newRound(nextRound, player);
-    domUpdates.showBoard(game.round, player)
+    game.newRound(player);
   } 
   
   if (game.currentRound > 3) {
-    game.calculateWinner(game.players)
-    domUpdates.calculateWinner()
-    domUpdates.endGame()
+    game.calculateWinner()
   }
 })
 
 $('#btn_game-quit, #btn_restart-game').on('click', function () {
   domUpdates.quitGame()
 })
-
