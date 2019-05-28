@@ -13,6 +13,7 @@ class Turn {
 
   fixLowerCaseGuess(playerGuess) {
     playerGuess = playerGuess
+    .toLowerCase()
     .split(' ')
     .map(letter => letter.charAt(0).toUpperCase() + letter.substring(1))
     .join(' ').trim();
