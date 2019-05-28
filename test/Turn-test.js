@@ -4,6 +4,7 @@ import Round from '../src/Round';
 import Player from '../src/Player'
 import spies from 'chai-spies'
 import domUpdates from '../src/domUpdates'
+import data from '../data'
 import Game from '../src/Game';
 const expect = chai.expect;
 chai.use(spies)
@@ -16,7 +17,7 @@ describe('Turn', function () {
   let player1;
   let player2;
   beforeEach(function () {
-    round = new Round(2, 2, 2)
+    round = new Round(2, 2, data, 2)
     turn = new Turn(round.answers, round.currentPlayer)
     player1 = new Player(1, 'Patrick', 'Wrap It')
     player2 = new Player(2, 'Aidan', 'What up')

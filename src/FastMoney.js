@@ -1,7 +1,7 @@
-import data from "../data";
-import Round from "../src/Round";
-import Player from '../src/Player';
-import Game from '../src/Game';
+// import data from "../data";
+// import Round from "../src/Round";
+// import Player from '../src/Player';
+// import Game from '../src/Game';
 import Turn from './Turn';
 import domUpdates from './domUpdates';
 

@@ -1,4 +1,4 @@
-import data from "../data";
+// import data from "../data";
 import Round from "../src/Round";
 import Player from '../src/Player';
 import Game from '../src/Game';

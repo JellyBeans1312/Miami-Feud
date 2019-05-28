@@ -1,12 +1,12 @@
 import Round from '../src/Round'
 import Player from './Player';
 import domUpdates from './domUpdates';
-import FastMoney from './FastMoney';
+// import FastMoney from './FastMoney';
 class Game {
-  constructor(name1, name2) {
+  constructor(name1, name2, randomStart, data) {
     this.players = this.newPlayers(name1, name2)
     this.currentRound = 1;
-    this.round = new Round(1, 1)
+    this.round = new Round(1, randomStart, data)
   }
 
   newPlayers (name1, name2) {
@@ -18,14 +18,14 @@ class Game {
     return bothPlayers
   }
 
-  newRound(currentPlayer) {
+  newRound(currentPlayer, data) {
     this.currentRound++
     let that = this;
     if (this.currentRound < 5) {
       setTimeout(() => {
         domUpdates.showBoard(that.round)
       }, 2000);
-      return this.round = new Round(that.currentRound, currentPlayer)
+      return this.round = new Round(that.currentRound, currentPlayer, data)
     } else {
       setTimeout(() => {
         that.calculateWinner()

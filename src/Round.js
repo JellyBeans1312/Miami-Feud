@@ -1,19 +1,18 @@
-import data from "../data";
 import Turn from "./Turn";
-import domUpdates from "./domUpdates";
 import FastMoney from "./FastMoney";
 class Round {
-  constructor (currentRound, currentPlayer, num) {
+  constructor (currentRound, currentPlayer, data, num) {
     this.randomNum = num || (Math.floor(Math.random() * (15 - 1 + 1)) + 1);
-    this.survey = (this.pullSurveys(this.randomNum));
-    this.answers = this.findAnswers()
     this.currentRound = currentRound;
     this.currentPlayer = currentPlayer;
+    this.data = data;
+    this.survey = (this.pullSurveys(this.randomNum));
+    this.answers = this.findAnswers()
     this.turn = (this.startNewTurn())
   }
 
   findAnswers() {
-    let answers = [...data.answers]
+    let answers = [...this.data.answers]
     let filteredAnswers = answers
       .filter(steve => steve.surveyId === this.survey.id)
     let sortedAnswers = filteredAnswers
@@ -22,20 +21,19 @@ class Round {
   }
 
   pullSurveys(randomSurveyID) {
-    let survey = data.surveys.find(survey => survey.id === randomSurveyID);
+    let survey = this.data.surveys.find(survey => survey.id === randomSurveyID);
     return survey;
   }
 
   removeSurvey() {
-    let index = data.surveys.indexOf(this.survey)
-    return data.surveys.splice(index, 1)
+    let index = this.data.surveys.indexOf(this.survey)
+    return this.data.surveys.splice(index, 1)
   }
 
   startNewTurn() {
     if (this.currentRound < 3) {
       return this.turn = new Turn(this.answers, this.currentPlayer);
     } else {
-      console.log('fast money')
       return this.turn = new FastMoney(this.answers, this.currentPlayer)
     }
     

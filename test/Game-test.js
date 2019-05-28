@@ -3,6 +3,7 @@ import Game from '../src/Game'
 import Round from '../src/Round'
 import spies from 'chai-spies'
 import domUpdates from '../src/domUpdates'
+import data from '../data'
 const expect = chai.expect;
 chai.use(spies)
 chai.spy.on(domUpdates, 'endGame', () => true)
@@ -13,7 +14,7 @@ describe('Game', function () {
 
   let game;
   beforeEach(function () {
-    game = new Game('Aidan', 'Patrick')
+    game = new Game('Aidan', 'Patrick', 1,  data)
   })
 
   it('should be a function', function () {

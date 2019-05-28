@@ -13,7 +13,7 @@ describe('Round', function () {
   let round;
 
   beforeEach(function () {
-    round = new Round(1, 1, 5)
+    round = new Round(1, 1, data, 5)
   })
 
   it('should be a function', function () {
@@ -42,21 +42,13 @@ describe('Round', function () {
   })
 
   it('should remove the survey out of the data after it pulls ', function () {
-    expect(data.surveys[4].id).to.equal(5)
+    expect(round.data.surveys[4].id).to.equal(5)
     
     round.removeSurvey()
     
-    expect(data.surveys).to.have.length(14)
-    expect(data.surveys[4].id).to.equal(6)
+    expect(round.data.surveys).to.have.length(14)
+    expect(round.data.surveys[4].id).to.equal(6)
     
-    let round2 = new Round(1, 1, 3)
-    
-    expect(data.surveys[2].id).to.equal(3)
-    
-    round2.removeSurvey()
-    
-    expect(data.surveys[2].id).to.equal(4)
-    expect(data.surveys).to.have.length(13)
   })
 
 });

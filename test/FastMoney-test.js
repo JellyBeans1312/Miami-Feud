@@ -3,6 +3,7 @@ import Game from '../src/Game'
 import Round from '../src/Round'
 import spies from 'chai-spies'
 import Player from '../src/Player'
+import data from '../data'
 import domUpdates from '../src/domUpdates'
 import FastMoney from '../src/FastMoney';
 const expect = chai.expect;
@@ -18,7 +19,7 @@ describe('FastMoney', function () {
   let player1;
   let player2;
   beforeEach(function () {
-    round =  new Round(2, 2, 2)
+    round =  new Round(2, 2, data, 2)
     fastMoney = new FastMoney(round.answers, round.currentPlayer)
     player1 = new Player(1, 'Patrick', 'Wrap It')
     player2 = new Player(2, 'Aidan', 'What up')
