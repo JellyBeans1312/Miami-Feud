@@ -1,6 +1,7 @@
 import Round from '../src/Round'
 import Player from './Player';
 import domUpdates from './domUpdates';
+import FastMoney from './FastMoney';
 class Game {
   constructor(name1, name2) {
     this.players = this.newPlayers(name1, name2)
@@ -20,13 +21,15 @@ class Game {
   newRound(currentPlayer) {
     this.currentRound++
     let that = this;
-    if (this.currentRound <= 3) {
+    if (this.currentRound < 5) {
       setTimeout(() => {
         domUpdates.showBoard(that.round)
       }, 2000);
       return this.round = new Round(that.currentRound, currentPlayer)
     } else {
-      return this.calculateWinner()
+      setTimeout(() => {
+        that.calculateWinner()
+      }, 5000);
     }
   }
 

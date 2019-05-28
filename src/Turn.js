@@ -5,19 +5,10 @@ import Game from '../src/Game';
 import domUpdates from './domUpdates';
 
 class Turn {
-  constructor(survey, currentPlayer) {
-    this.answers = (this.findAnswers(survey));
+  constructor(answers, currentPlayer) {
+    this.answers = answers;
     this.currentPlayer = currentPlayer;
-    this.guessed = []
-  }
-
-  findAnswers (survey) {
-    let answers = [... data.answers]
-    let filteredAnswers = answers
-      .filter(steve => steve.surveyId === survey.id)
-    let sortedAnswers = filteredAnswers
-      .sort((a, b)=> b.respondents - a.respondents)
-    return sortedAnswers
+    this.guessed = [];
   }
 
   checkGuess(player) {  

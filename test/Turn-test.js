@@ -17,7 +17,7 @@ describe('Turn', function () {
   let player2;
   beforeEach(function () {
     round = new Round(2, 2, 2)
-    turn = new Turn(round.survey, round.currentPlayer)
+    turn = new Turn(round.answers, round.currentPlayer)
     player1 = new Player(1, 'Patrick', 'Wrap It')
     player2 = new Player(2, 'Aidan', 'What up')
   })
