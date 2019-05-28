@@ -11,6 +11,14 @@ class Turn {
     this.guessed = [];
   }
 
+  fixLowerCaseGuess(playerGuess) {
+    playerGuess = playerGuess
+    .split(' ')
+    .map(letter => letter.charAt(0).toUpperCase() + letter.substring(1))
+    .join(' ').trim();
+    return playerGuess
+  }
+
   checkGuess(player) {  
     let guessed = this.answers
       .map(steve => steve.answer)

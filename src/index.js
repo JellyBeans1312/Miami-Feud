@@ -35,16 +35,10 @@ $('#btn_submit').on('click', function (e) {
   e.preventDefault()
 
   if (game.round.turn.currentPlayer === 1) {
-    game.players[0].guess = $('#input_player-guess').val()
-    .split(' ')
-    .map(letter => letter.charAt(0).toUpperCase() + letter.substring(1))
-    .join(' ').trim()
+    game.players[0].guess = game.round.turn.fixLowerCaseGuess($('#input_player-guess').val())
     game.round.turn.checkGuess(game.players[0])
   } else {
-    game.players[1].guess = $('#input_player-guess').val()
-    .split(' ')
-    .map(letter => letter.charAt(0).toUpperCase() + letter.substring(1))
-    .join(' ').trim()
+    game.players[1].guess = game.round.turn.fixLowerCaseGuess($('#input_player-guess').val())
     game.round.turn.checkGuess(game.players[1])
   }
 
