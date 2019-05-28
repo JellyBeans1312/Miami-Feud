@@ -329,9 +329,15 @@ form {
 
 }
 
+.board_game-over{
+  background: url('../images/pointingsteve.jpg')
+}
+
 .game-over {
-  font-size: 90px;
-  justify-content: center;
+  font-size: 3rem;
+  justify-content: left;
+  margin: 20px;
+  animation: flicker 1.5s infinite alternate;
   color: $miami-hot-pink;
   font-weight: 800;
 }
