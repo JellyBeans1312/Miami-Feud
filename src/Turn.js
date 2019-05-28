@@ -1,7 +1,3 @@
-// import data from "../data";
-import Round from "../src/Round";
-import Player from '../src/Player';
-import Game from '../src/Game';
 import domUpdates from './domUpdates';
 
 class Turn {
@@ -9,6 +5,15 @@ class Turn {
     this.answers = answers;
     this.currentPlayer = currentPlayer;
     this.guessed = [];
+  }
+
+  fixLowerCaseGuess(playerGuess) {
+    playerGuess = playerGuess
+      .toLowerCase()
+      .split(' ')
+      .map(letter => letter.charAt(0).toUpperCase() + letter.substring(1))
+      .join(' ').trim();
+    return playerGuess
   }
 
   checkGuess(player) {  
