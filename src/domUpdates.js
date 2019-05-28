@@ -72,7 +72,10 @@ const domUpdates = {
   },
 
   startTimer: function (timer) {
-    $('#round_current-round').text(`Fast Money ${timer} seconds`)
+    $('#round_current-round').text(`Fast Money 30 seconds`)
+    setTimeout(function() {
+      $('#round_current-round').text(`Fast Money ${timer} seconds`)
+    }, 4000)
   }
 
 }
