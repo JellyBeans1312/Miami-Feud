@@ -2,10 +2,6 @@ import $ from 'jquery';
 import './css/base.scss';
 import './images/turing-logo.png'
 import Game from './Game';
-import Round from './Round';
-import Turn from './Turn';
-import Player from './Player';
-import Survey from './Survey';
 import domUpdates from './domUpdates';
 
 $(document).ready(function () {
@@ -45,10 +41,6 @@ $('#btn_submit').on('click', function (e) {
     let player = game.round.turn.currentPlayer;
     game.newRound(player);
   } 
-  
-  if (game.currentRound > 3) {
-    game.calculateWinner()
-  }
 })
 
 $('#btn_game-quit, #btn_restart-game').on('click', function () {
