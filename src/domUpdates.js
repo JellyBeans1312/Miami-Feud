@@ -6,8 +6,8 @@ const domUpdates = {
   showBoard: function (roundObj) {
     $('header').show()
     $('#form_game-start').hide()
+    $('.timer').hide()
     $('#game-board').show()
-
     $('#round_current-round').text(`Round ${roundObj.currentRound++}`)
     $('#survey_output').text(roundObj.survey.question)
     this.hideAnswers()
@@ -69,6 +69,10 @@ const domUpdates = {
     $('#btn_restart-game').hide()
     $(`#score_player-1`).text('0')
     $(`#score_player-2`).text('0')
+  },
+
+  startTimer: function (timer) {
+    $('#round_current-round').text(`Fast Money ${timer} seconds`)
   }
 
 }
