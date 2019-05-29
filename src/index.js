@@ -49,3 +49,13 @@ $('#btn_submit').on('click', function (e) {
 $('#btn_game-quit, #btn_restart-game').on('click', function () {
   domUpdates.quitGame()
 })
+
+$('#rules').on('click', function (e) {
+  e.preventDefault()
+  domUpdates.showRules()
+})
+
+$('.close, .popup-overlay').on('click', function(e) {
+  e.preventDefault()
+  domUpdates.hideRules()
+})
