@@ -19,7 +19,8 @@ class Game {
   newRound(round, currentPlayer) {
     let that = this;
     setTimeout(() => {
-      domUpdates.showBoard(that, currentPlayer)
+      domUpdates.showBoard(that.round, currentPlayer)
+      domUpdates.switchRound()
     }, 2000);
     return this.round = new Round(round, currentPlayer)
   }

@@ -1,5 +1,6 @@
 import data from "../data";
 import Turn from "./Turn";
+import domUpdates from "./domUpdates";
 // import domUpdates from './domUpdates';
 class Round {
   constructor (currentRound, currentPlayer, num) {
@@ -7,7 +8,7 @@ class Round {
     this.survey = (this.pullSurveys(this.randomNum));
     this.currentRound = currentRound;
     this.currentPlayer = currentPlayer;
-    this.turn = new Turn(this.survey)
+    this.turn = new Turn(this.survey);
   }
 
   pullSurveys(randomSurveyID) {
