@@ -16,7 +16,6 @@ $(document).ready(function () {
   $('header').hide()
 })
 
-
 let game;
 $('#btn_game-start').on('click', function (e) {
   e.preventDefault()
@@ -33,13 +32,12 @@ $('#btn_game-start').on('click', function (e) {
 
 $('#btn_submit').on('click', function (e) {
   e.preventDefault()
-
   if (game.round.turn.currentPlayer === 1) {
     game.players[0].guess = $('#input_player-guess').val()
-    game.round.turn.checkGuess(game.players[0])
+    turn.checkGuess(game.players[0])
   } else {
     game.players[1].guess = $('#input_player-guess').val()
-    game.round.turn.checkGuess(game.players[1])
+    turn.checkGuess(game.players[1])
   }
 
   if (game.round.turn.guessed.length === 3) {
