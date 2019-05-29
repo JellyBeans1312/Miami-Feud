@@ -82,9 +82,7 @@ body {
     height:200px;
     width:40%;
     overflow: scroll;
-
   }
-
 }
 
 input{
@@ -141,6 +139,34 @@ header {
   }
 }
 
+
+.popup-overlay{
+  visibility:hidden;
+  position:absolute;
+  background:#ffffff;
+  border:3px solid #666666;
+  width:50%;
+  height:50%;
+  left:25%; 
+  overflow: scroll;
+}
+
+.popup-overlay.active{
+  visibility:visible;
+  text-align:center;
+}
+
+.popup-content {
+ visibility:hidden;
+ .close{
+  width: 80%;
+ }
+}
+
+.popup-content.active {
+  visibility:visible;
+  overflow: scroll;
+}
 
 #game-board{
   display: flex;

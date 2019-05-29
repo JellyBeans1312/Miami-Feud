@@ -84,6 +84,14 @@ const domUpdates = {
       //   clearInterval(interval)
       // }
     }, 1000);
+  },
+
+  showRules: function () {
+    $(".popup-overlay, .popup-content").addClass("active");
+  },
+
+  hideRules: function () {
+    $(".popup-overlay, .popup-content").removeClass("active");
   }
 
 }
