@@ -36,7 +36,6 @@ class Round {
     } else {
       return this.turn = new FastMoney(this.answers, this.currentPlayer)
     }
-    
   }
 } 
 
