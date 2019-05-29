@@ -8,7 +8,11 @@ const domUpdates = {
     $('#form_game-start').hide()
     $('.timer').hide()
     $('#game-board').show()
-    $('#round_current-round').text(`Round ${roundObj.currentRound++}`)
+    if (roundObj.currentRound < 3) {
+      $('#round_current-round').text(`Round ${roundObj.currentRound++}`)
+    } else {
+      $('#round_current-round').text('Fast Money 30 seconds')
+    }
     $('#survey_output').text(roundObj.survey.question)
     this.hideAnswers()
     $('input').val('')
@@ -71,18 +75,17 @@ const domUpdates = {
     $(`#score_player-2`).text('0')
   },
 
-  startTimer: function (timer) {
-    $('#round_current-round').text(`Fast Money 30 seconds`)
+  startTimer: function (timer, guessed) {
     setTimeout(function() {
-      $('#round_current-round').text(`Fast Money ${timer} seconds`)
-    }, 4000)
     let interval = setInterval(() => {
-      timer--;
-      $('#round_current-round').text(`Fast Money ${timer}`)
-      if (timer <= 0 || guessed.length === 3) {
-        clearInterval(interval)
-      }
-    }, 1000);
+        timer--;
+        $('#round_current-round').text(`Fast Money ${timer}`)
+        if (timer <= 0 || guessed.length === 3) {
+          clearInterval(interval)
+        }
+      }, 1000);
+    }, 4000)
+    
   }
 
 }
