@@ -78,11 +78,6 @@ const domUpdates = {
       if (timer <= 0 || guessed.length === 3) {
         clearInterval(interval)
       }
-      // if (this.switchPlayer()) {
-      //   console.log('ima dummy');
-        
-      //   clearInterval(interval)
-      // }
     }, 1000);
   },
 

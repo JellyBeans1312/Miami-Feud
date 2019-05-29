@@ -61,6 +61,8 @@ describe('Turn', function () {
     expect(turn.guessed).to.eql(['Wrap It'])
   })
 
-  
+  it('should accept lower case answer with stuff', function() {   
+    expect(turn.fixLowerCaseGuess(' wrap it')).to.eql('Wrap It')
+  })
 
 });
