@@ -71,11 +71,14 @@ const domUpdates = {
     $(`#score_player-2`).text('0')
   },
 
-  startTimer: function (timer) {
-    $('#round_current-round').text(`Fast Money 30 seconds`)
-    setTimeout(function() {
-      $('#round_current-round').text(`Fast Money ${timer} seconds`)
-    }, 4000)
+  startTimer: function (timer, guessed) {
+    let interval = setInterval(() => {
+      timer--;
+      $('#round_current-round').text(`Fast Money ${timer}`)
+      if (timer <= 0 || guessed.length === 3) {
+        clearInterval(interval)
+      }
+    }, 1000);
   }
 
 }

@@ -25,11 +25,20 @@ class Game {
       setTimeout(() => {
         domUpdates.showBoard(that.round)
       }, 2000);
+      this.autoRound(currentPlayer, data)
       return this.round = new Round(that.currentRound, currentPlayer, data)
     } else {
       setTimeout(() => {
         that.calculateWinner()
-      }, 5000);
+      }, 2000);
+    }
+  }
+
+  autoRound(currentPlayer, data) {
+    if (this.currentRound >= 3) {
+      setInterval(() => {
+        this.newRound(currentPlayer, data)
+      }, 70000);
     }
   }
 
