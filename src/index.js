@@ -1,55 +1,30 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
+fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/family-feud/data')
+  .then(response => response.json())
+  .then(feudData => data = feudData.data)
 
-// An example of how you import jQuery into a JS file if you use jQuery in that file
+var data;
+
+
 import $ from 'jquery';
-
-// An example of how you tell webpack to use a CSS (SCSS) file
-
 import './css/base.scss';
-
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
 import Game from './Game';
-import Round from './Round';
-import Turn from './Turn';
-import Player from './Player';
-import Survey from './Survey';
 import domUpdates from './domUpdates';
 
 $(document).ready(function () {
   $('#game-board').hide()
-  $('#steve2').hide()
   $('header').hide()
 })
 
-let data;
-fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/family-feud/data')
-  .then(response => response.json())
-  .then(feudData => feudData.data = data)
-console.log(data);
-
-
-$(document).ready(function () {
-  $('#game_board').hide()
-  $('#steve2').hide()
-})
-
 let game;
-// let round;
-// let turn;
 $('#btn_game-start').on('click', function (e) {
   e.preventDefault()
-  console.log('prevent')
-  let player1 = $('#input_name-player1').val()
-  let player2 = $('#input_name-player2').val()
-  if (player1 && player2) {
-    game = new Game(player1, player2)
-
-    // round = game.round
-    // turn = game.round.turn
+  let randomNum = 1;
+  let playerName1 = $('#input_name-player1').val()
+  let playerName2 = $('#input_name-player2').val()
+  if (playerName1 && playerName2) {
+    game = new Game(playerName1, playerName2, randomNum, data)
     domUpdates.showBoard(game.round, 0)
-    domUpdates.assignNames(player1, player2)
   } else {
     alert('please enter a name')
   }
@@ -57,8 +32,7 @@ $('#btn_game-start').on('click', function (e) {
 
 $('#btn_submit').on('click', function (e) {
   e.preventDefault()
-  console.log('button')
-  if (round.turn.currentPlayer === 1) {
+  if (game.round.turn.currentPlayer === 1) {
     game.players[0].guess = $('#input_player-guess').val()
     turn.checkGuess(game.players[0])
   } else {
@@ -68,14 +42,10 @@ $('#btn_submit').on('click', function (e) {
 
   if (game.round.turn.guessed.length === 3) {
     let player = game.round.turn.currentPlayer;
-    let nextRound = game.currentRound++;
-    console.log(player)
-    game.newRound(nextRound, player);
-  }
+    game.newRound(player, data);
+  } 
 })
 
-
-$('#btn_game-quit').on('click', function () {
+$('#btn_game-quit, #btn_restart-game').on('click', function () {
   domUpdates.quitGame()
 })
-

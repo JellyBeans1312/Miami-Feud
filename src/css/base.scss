@@ -329,69 +329,87 @@ form {
 
 }
 
+.board_game-over{
+  background: url('../images/pointingsteve.jpg')
+}
+
+.game-over {
+  font-size: 3rem;
+  justify-content: left;
+  margin: 20px;
+  animation: flicker 1.5s infinite alternate;
+  color: $miami-hot-pink;
+  font-weight: 800;
+}
+
+#btn_restart-game {
+  display: none;
+}
 
 /*---------Animations-----------*/
 
+
+
 @keyframes flicker {
     
-    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-      
-        text-shadow:
-            -0.2rem -0.2rem 1rem #fff,
-            0.2rem 0.2rem 1rem #fff,
-            10px 10px 2rem $miami-hot-pink,
-            10px 10px 4rem $miami-hot-pink,
-            10px 10px 6rem $miami-hot-pink,
-            10px 10px 8rem $miami-hot-pink,
-            10px 10px 10rem $miami-hot-pink;
-        
-        box-shadow:
-            0 0 .5rem #fff,
-            inset 0 0 .5rem #fff,
-            0 0 2rem $miami-soft-pink,
-            inset 0 0 2rem $miami-soft-pink,
-            0 0 4rem $miami-soft-pink,
-            inset 0 0 4rem $miami-soft-pink;        
-    }
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
     
-    20%, 24%, 55% {        
-        text-shadow: none;
-        box-shadow: none;
-    }    
-}
-
-@keyframes flicker-box {
-    
-    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-        
-        box-shadow:
-            0 0 .5rem #fff,
-            inset 0 0 .5rem #fff,
-            0 0 2rem $miami-soft-pink,
-            inset 0 0 2rem $miami-soft-pink,
-            0 0 4rem $miami-soft-pink,
-            inset 0 0 4rem $miami-soft-pink;        
-    }
-    
-    20%, 24%, 55% {        
-        box-shadow: none;
-    }    
-}
-
-@keyframes flicker-text{
-      0%, 22%, 24%, 26%, 27%, 59%, 60%, 100% {
-      
       text-shadow:
           -0.2rem -0.2rem 1rem #fff,
           0.2rem 0.2rem 1rem #fff,
-          0 0 1.2rem $miami-soft-pink,
+          10px 10px 2rem $miami-hot-pink,
+          10px 10px 4rem $miami-hot-pink,
+          10px 10px 6rem $miami-hot-pink,
+          10px 10px 8rem $miami-hot-pink,
+          10px 10px 10rem $miami-hot-pink;
+      
+      box-shadow:
+          0 0 .5rem #fff,
+          inset 0 0 .5rem #fff,
           0 0 2rem $miami-soft-pink,
+          inset 0 0 2rem $miami-soft-pink,
           0 0 4rem $miami-soft-pink,
-          0 0 6rem $miami-soft-pink,
-          0 0 8rem $miami-soft-pink;
-    }
-    
-    21%, 25%, 58% {        
-        text-shadow: none;
-    }  
+          inset 0 0 4rem $miami-soft-pink;        
+  }
+  
+  20%, 24%, 55% {        
+      text-shadow: none;
+      box-shadow: none;
+  }    
+}
+
+@keyframes flicker-box {
+  
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+      
+      box-shadow:
+          0 0 .5rem #fff,
+          inset 0 0 .5rem #fff,
+          0 0 2rem $miami-soft-pink,
+          inset 0 0 2rem $miami-soft-pink,
+          0 0 4rem $miami-soft-pink,
+          inset 0 0 4rem $miami-soft-pink;        
+  }
+  
+  20%, 24%, 55% {        
+      box-shadow: none;
+  }    
+}
+
+@keyframes flicker-text{
+  0%, 22%, 24%, 26%, 27%, 59%, 60%, 100% {
+  
+  text-shadow:
+      -0.2rem -0.2rem 1rem #fff,
+      0.2rem 0.2rem 1rem #fff,
+      0 0 1.2rem $miami-soft-pink,
+      0 0 2rem $miami-soft-pink,
+      0 0 4rem $miami-soft-pink,
+      0 0 6rem $miami-soft-pink,
+      0 0 8rem $miami-soft-pink;
+  }
+  
+  21%, 25%, 58% {        
+      text-shadow: none;
+  }  
 }

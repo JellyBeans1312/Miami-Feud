@@ -1,26 +1,25 @@
-import data from "../data";
-import Round from "../src/Round";
-import Player from '../src/Player';
-import Game from '../src/Game';
 import domUpdates from './domUpdates';
 
 class Turn {
-  constructor(survey) {
-    this.answers = (this.findAnswers(survey));
-    this.currentPlayer = 1;
-    this.guessed = []
+  constructor(answers, currentPlayer) {
+    this.answers = answers;
+    this.currentPlayer = currentPlayer;
+    this.guessed = [];
   }
 
-  findAnswers (survey) {
-    let answers = [... data.answers]
-    let filteredAnswers = answers.filter(steve => steve.surveyId === survey.id)
-    // console.log(filteredAnswers)
-    let sortedAnswers = filteredAnswers.sort((a, b)=> b.respondents - a.respondents)
-    return sortedAnswers
+  fixLowerCaseGuess(playerGuess) {
+    playerGuess = playerGuess
+      .toLowerCase()
+      .split(' ')
+      .map(letter => letter.charAt(0).toUpperCase() + letter.substring(1))
+      .join(' ').trim();
+    return playerGuess
   }
 
   checkGuess(player) {  
-    let guessed = this.answers.map(steve => steve.answer).indexOf(player.guess)
+    let guessed = this.answers
+      .map(steve => steve.answer)
+      .indexOf(player.guess)
     if (this.guessed.includes(player.guess)) {
       domUpdates.checkGuess()
     } else if (guessed === -1) {

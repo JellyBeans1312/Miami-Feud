@@ -3,17 +3,15 @@ import $ from 'jquery'
 
 const domUpdates = {
 
-  showBoard: function (roundObj, userID) {
+  showBoard: function (roundObj) {
     $('header').show()
     $('#form_game-start').hide()
+    $('.timer').hide()
     $('#game-board').show()
-    console.log(roundObj)
+    $('#round_current-round').text(`Round ${roundObj.currentRound++}`)
     $('#survey_output').text(roundObj.survey.question)
     this.hideAnswers()
     $('input').val('')
-    this.switchPlayer(userID)
-    $(`score_player-1`).text('0')
-    $(`score_player-2`).text('0')
   },
 
   switchRound() {
@@ -23,8 +21,16 @@ const domUpdates = {
     return $('#round_current-round span').text(increm)
   },
 
+  endGame(winner) {
+    $('#game-board').hide()
+    $('#form_game-start').hide()
+    $('header').hide()
+    $('.game-over').show()
+    $('.game-over').text(`Game Over, ${winner.name} won with a score of ${winner.score}!!!`)
+    $('#btn_restart-game').show()
+  },
+
   assignNames: function (name1, name2) {
-    // $("#name_player-1, label[for='input_player-1']").text(name1)
     $("#name_player-1").text(name1)
     $("#name_player-2").text(name2)
   },
@@ -47,7 +53,6 @@ const domUpdates = {
   },
 
   hideAnswers: function () {
-    console.log('whatup')
     $('.turn_answer-0').text('Answer')
     $('.turn_answer-1').text('Answer')
     $('.turn_answer-2').text('Answer')
@@ -60,6 +65,25 @@ const domUpdates = {
     $('#form_game-start').show()
     $('#game-board').hide()
     $('header').hide()
+    $('.game-over').hide()
+    $('#btn_restart-game').hide()
+    $(`#score_player-1`).text('0')
+    $(`#score_player-2`).text('0')
+  },
+
+  startTimer: function (timer, guessed) {
+    let interval = setInterval(() => {
+      timer--;
+      $('#round_current-round').text(`Fast Money ${timer}`)
+      if (timer <= 0 || guessed.length === 3) {
+        clearInterval(interval)
+      }
+      // if (this.switchPlayer()) {
+      //   console.log('ima dummy');
+        
+      //   clearInterval(interval)
+      // }
+    }, 1000);
   }
 
 }
