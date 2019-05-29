@@ -1,5 +1,4 @@
 import chai from 'chai';
-import Game from '../src/Game'
 import Round from '../src/Round'
 import spies from 'chai-spies'
 import Player from '../src/Player'
@@ -8,9 +7,8 @@ import domUpdates from '../src/domUpdates'
 import FastMoney from '../src/FastMoney';
 const expect = chai.expect;
 chai.use(spies)
-// chai.spy.on(domUpdates, 'correctAnswer', () => true)
 chai.spy.on(domUpdates, 'startTimer', () => true)
-// chai.spy.on(domUpdates, 'showBoard', () => true)
+
 
 describe('FastMoney', function () {
 

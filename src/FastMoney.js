@@ -1,7 +1,3 @@
-// import data from "../data";
-// import Round from "../src/Round";
-// import Player from '../src/Player';
-// import Game from '../src/Game';
 import Turn from './Turn';
 import domUpdates from './domUpdates';
 
@@ -13,6 +9,7 @@ class FastMoney extends Turn {
 
   checkGuess(player) {
     super.checkGuess(player)
+    
   }
 
   increaseScore(player, answer, index) {
@@ -22,16 +19,13 @@ class FastMoney extends Turn {
   }
 
   timer() {
-    let superThat = super.switchPlayer()
-    var timer = 30;
-    var interval = setInterval(function () {
-      timer--;
-      domUpdates.startTimer(timer)
-      if (timer === 0) {
-        clearInterval(interval)
-        superThat
-      }
-    }, 1000);
+    let timer = 30;   
+    let that = this 
+    domUpdates.startTimer(timer, this.guessed)
+    setTimeout(() => {
+      super.switchPlayer()
+      domUpdates.startTimer(timer, that.guessed)
+    }, 30000);
   }
 
   switchPlayer() {
