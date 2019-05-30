@@ -153,13 +153,30 @@ header {
 
 .popup-overlay.active{
   visibility:visible;
-  text-align:center;
+  h2{
+    text-align:center;
+    font-weight: 900;
+    font-family: $miami-font;
+    color: $beachy-blue;
+    text-shadow: 2px 2px $miami-soft-pink;
+    font-size: 3em;
+    margin: 0;
+  }
+  h3,h4{
+    text-align:center;
+    font-weight: 900;
+    font-family: $neon-font;
+    color: $miami-hot-pink;
+    text-shadow: 2px 2px $miami-soft-pink;
+    font-size: 2em;
+  }
 }
 
 .popup-content {
  visibility:hidden;
  .close{
-  width: 80%;
+  width: 90%;
+  position: relative;
  }
 }
 
