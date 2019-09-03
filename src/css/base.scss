@@ -192,7 +192,8 @@ header {
   height: 100%;
   display:grid;
   grid-template-columns: 1fr 2fr 1fr;
-  background: url('../images/gametime-bg.png');background-size: cover;
+  background: url('../images/gametime-bg.png');
+  background-size: cover;
   background-repeat: no-repeat;
   grid-template-rows: 50px 1fr 1fr;
 }
@@ -373,7 +374,9 @@ form {
 }
 
 .board_game-over{
-  background: url('../images/pointingsteve.jpg')
+  background: url('../images/pointingsteve.jpg');
+  background-size: cover;
+  height: 100vh;
 }
 
 .game-over {
@@ -383,6 +386,9 @@ form {
   animation: flicker 1.5s infinite alternate;
   color: $miami-hot-pink;
   font-weight: 800;
+  position: absolute;
+  right: 75%;
+
 }
 
 #btn_restart-game {

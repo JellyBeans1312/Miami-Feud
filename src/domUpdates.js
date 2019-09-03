@@ -8,7 +8,11 @@ const domUpdates = {
     $('#form_game-start').hide()
     $('.timer').hide()
     $('#game-board').show()
-    $('#round_current-round').text(`Round ${roundObj.currentRound++}`)
+    if (roundObj.currentRound < 3) {
+      $('#round_current-round').text(`Round ${roundObj.currentRound++}`)
+    } else {
+      $('#round_current-round').text('Fast Money 30 seconds')
+    }
     $('#survey_output').text(roundObj.survey.question)
     this.hideAnswers()
     $('input').val('')
@@ -72,6 +76,7 @@ const domUpdates = {
   },
 
   startTimer: function (timer, guessed) {
+    setTimeout(function() {
     let interval = setInterval(() => {
       timer--;
       $('#round_current-round').text(`Fast Money ${timer}`)

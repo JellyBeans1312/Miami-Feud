@@ -19,12 +19,10 @@ class FastMoney extends Turn {
   }
 
   timer() {
-    let timer = 30;   
-    let that = this 
+    let timer = 30;    
     domUpdates.startTimer(timer, this.guessed)
     setTimeout(() => {
       super.switchPlayer()
-      domUpdates.startTimer(timer, that.guessed)
     }, 30000);
   }
 

@@ -25,7 +25,7 @@ class Game {
       setTimeout(() => {
         domUpdates.showBoard(that.round)
       }, 2000);
-      this.autoRound(currentPlayer, data)
+      // this.autoRound(currentPlayer, data)
       return this.round = new Round(that.currentRound, currentPlayer, data)
     } else {
       setTimeout(() => {
@@ -34,13 +34,13 @@ class Game {
     }
   }
 
-  autoRound(currentPlayer, data) {
-    if (this.currentRound >= 3) {
-      setInterval(() => {
-        this.newRound(currentPlayer, data)
-      }, 70000);
-    }
-  }
+  // autoRound(currentPlayer, data) {
+  //   if (this.currentRound >= 3) {
+  //     setInterval(() => {
+  //       this.newRound(currentPlayer, data)
+  //     }, 70000);
+  //   }
+  // }
 
   calculateWinner() {
     let playerScore = this.players
