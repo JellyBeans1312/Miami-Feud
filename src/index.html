@@ -6,7 +6,7 @@
   </head>
   <body>
     <header>
-      <button id="Rules">Rules</button>
+      <button id="rules">Rules</button>
       <h2>MIAMI<span>FEUD</span></h2>
       <button id="btn_game-quit">Quit Game</button>
     </header>
@@ -20,6 +20,41 @@
         </div>
       </form>
       <div id="game-board">
+      <div class="popup-overlay">
+          <div class="popup-content">
+            <h2>Rules</h2>
+            <h3>Game Play</h3>
+            <ol>
+              <li>Must have 2 players</li>
+              <li>3 rounds - 3 rounds make up 1 game</li>
+              <li>Each player starts with a score of 0</li> 
+              <li>Turns end when one person guesses incorrectly to the current survey</li>
+              <li>Each player's score is displayed by their name</li>
+              <li>The winner is determined by the player with the highest total score at the end of 3 rounds</li>
+            </ol>
+            <h4>Round</h4>
+            <ol>
+              <li>In the first two rounds, players will take turns guessing responses to the survey.</li>
+              <li>The round is over when all responses
+              to the survey have been guessed</li>
+              <li>The third round is a "Fast Money" round: each player gets 30 seconds to enter as many responses as they can
+              think of.</li>
+            </ol>
+            <h4>Survey</h4>
+            <ul>
+              <li>A single, random survey is chosen at the start of every round</li>
+              <li>The survey chosen at the start of each round should not be shown more than once in a game</li>
+              <li>Each survey includes a question and the top 3 responses</li>
+              <li>Each response has a number associated with it that represents the number of people who gave that response</li>
+              <li>Initially, only the survey question is displayed and all responses are hidden.</li>
+              <li>As a player guesses a response, the survey should check its responses for a match</li>
+              <li>If there is a match, that answer should be revealed along with the number of respondents who gave it</li>
+              <li>If there is no match, the players turn will swtich</li>
+              <li>Responses should be displayed on the board in the order of most popular to least popular</li>
+            </ul>
+            <button class="close">Close</button>
+          </div>
+        </div>
         <div id="top-left"></div>
           <p id="steve1"></p>
           <article class="container player-container p1 neon-player-box">

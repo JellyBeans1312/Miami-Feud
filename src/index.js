@@ -16,10 +16,10 @@ $(document).ready(function () {
   $('header').hide()
 })
 
-
 let game;
 $('#btn_game-start').on('click', function (e) {
   e.preventDefault()
+
   let randomNum = 1;
   let playerName1 = $('#input_name-player1').val()
   let playerName2 = $('#input_name-player2').val()
@@ -33,7 +33,6 @@ $('#btn_game-start').on('click', function (e) {
 
 $('#btn_submit').on('click', function (e) {
   e.preventDefault()
-
   if (game.round.turn.currentPlayer === 1) {
     game.players[0].guess = game.round.turn.fixLowerCaseGuess($('#input_player-guess').val())
     game.round.turn.checkGuess(game.players[0])
@@ -50,4 +49,14 @@ $('#btn_submit').on('click', function (e) {
 
 $('#btn_game-quit, #btn_restart-game').on('click', function () {
   domUpdates.quitGame()
+})
+
+$('#rules').on('click', function (e) {
+  e.preventDefault()
+  domUpdates.showRules()
+})
+
+$('.close, .popup-overlay').on('click', function(e) {
+  e.preventDefault()
+  domUpdates.hideRules()
 })
