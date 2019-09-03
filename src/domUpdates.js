@@ -78,14 +78,20 @@ const domUpdates = {
   startTimer: function (timer, guessed) {
     setTimeout(function() {
     let interval = setInterval(() => {
-        timer--;
-        $('#round_current-round').text(`Fast Money ${timer}`)
-        if (timer <= 0 || guessed.length === 3) {
-          clearInterval(interval)
-        }
-      }, 1000);
-    }, 4000)
-    
+      timer--;
+      $('#round_current-round').text(`Fast Money ${timer}`)
+      if (timer <= 0 || guessed.length === 3) {
+        clearInterval(interval)
+      }
+    }, 1000);
+  },
+
+  showRules: function () {
+    $(".popup-overlay, .popup-content").addClass("active");
+  },
+
+  hideRules: function () {
+    $(".popup-overlay, .popup-content").removeClass("active");
   }
 
 }
