@@ -2,7 +2,7 @@
   "name": "gametime-starter",
   "version": "1.0.0",
   "description": "Gametime starter kit using webpack, mocha, and chai",
-  "homepage": "http://JellyBeans1312.github.io/miami-feud",
+  "homepage": "http://JellyBeans1312.github.io/Miami-Feud",
   "main": "src/index.js",
   "scripts": {
     "start": "webpack-dev-server",
@@ -11,15 +11,6 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "lint": "./node_modules/.bin/eslint 'src/**.js' 'test/**.js'"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/turingschool-examples/gametime-starter.git"
-  },
-  "author": "Turing School of Software and Design",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/turingschool-examples/gametime-starter/issues"
   },
   "devDependencies": {
     "chai": "^4.2.0",
